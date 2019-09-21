@@ -1,20 +1,11 @@
 <div class="floating">
   <app-location-input></app-location-input>
   <app-location-input></app-location-input>
-  <button class="search-button" nz-button (click)="searchRoute()" [nzLoading]="isSearching" nzType="primary"><i nz-icon
-                                                                                                         nzType="search"></i>Search
+  <button class="reset-button" nz-button (click)="resetSearch()" nzType="primary">Reset
+  </button>
+  <button class="search-button" nz-button (click)="searchRoute()" [nzLoading]="isSearching" nzType="primary"><i
+    nz-icon
+    nzType="search"></i>Search
   </button>
 </div>
-<div #map style="position: fixed; right: 0; width: 50%"></div>
-<!--
-<nz-layout>
-  &lt;!&ndash;    <nz-header></nz-header>&ndash;&gt;
-  <nz-content>
-&lt;!&ndash;    <div class="inner-content">&ndash;&gt;
-&lt;!&ndash;    </div>&ndash;&gt;
-  </nz-content>
-  &lt;!&ndash;    <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>&ndash;&gt;
-</nz-layout>
-<ng-template #zeroTrigger>
-  <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
-</ng-template>-->
+<div id="myMap" class="map-content"></div>
