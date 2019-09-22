@@ -46,3 +46,10 @@
   margin-left: 20px;
   display: inline-block;
 }
+
+@media screen and (max-width: 510px) {
+  .search-button {
+    float: left;
+    margin-left: 20px;
+  }
+}
