@@ -2,12 +2,12 @@
 <!--<input type="text" hint="input your location"/>-->
 <div class="example-input">
   <nz-input-group [nzSuffix]="suffixIconSearch">
-    <input type="text" nz-input placeholder="input search text"/>
+    <input [(ngModel)]="address" (ngModelChange)="onChange($event)" type="text" nz-input placeholder="input search text"/>
   </nz-input-group>
   <ng-template #suffixIconSearch>
     <i nz-icon nzType="search"></i>
   </ng-template>
-  <nz-autocomplete #auto>
+  <!--<nz-autocomplete #auto>
     <nz-auto-option *ngFor="let option of options" [nzValue]="option.category">
       {{ option.value }} 在
       <a [href]="'https://s.taobao.com/search?q=' + option.query" target="_blank" rel="noopener noreferrer">
@@ -16,5 +16,5 @@
       区块中
       <span class="global-search-item-count">约 {{ option.count }} 个结果</span>
     </nz-auto-option>
-  </nz-autocomplete>
+  </nz-autocomplete>-->
 </div>

@@ -1,6 +1,6 @@
 <div class="floating">
-  <app-location-input></app-location-input>
-  <app-location-input></app-location-input>
+  <app-location-input [(address)]="startPoint"></app-location-input>
+  <app-location-input [(address)]="endPoint"></app-location-input>
   <button class="reset-button" nz-button (click)="resetSearch()" nzType="primary">Reset
   </button>
   <button class="search-button" nz-button (click)="searchRoute()" [nzLoading]="isSearching" nzType="primary"><i
