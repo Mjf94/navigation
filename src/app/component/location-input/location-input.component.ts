@@ -13,6 +13,9 @@ export class LocationInputComponent implements OnInit {
 	@Output()
 	addressChange = new EventEmitter<string>();
 	
+	@Input()
+	placeHolder: string;
+	
 	options: Array<{ value: string; category: string; count: number }> = [];
 	
 	constructor() {

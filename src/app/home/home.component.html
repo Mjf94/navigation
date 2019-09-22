@@ -1,11 +1,24 @@
 <div class="floating">
-  <app-location-input [(address)]="startPoint"></app-location-input>
-  <app-location-input [(address)]="endPoint"></app-location-input>
-  <button class="reset-button" nz-button (click)="resetSearch()" nzType="primary">Reset
-  </button>
-  <button class="search-button" nz-button (click)="searchRoute()" [nzLoading]="isSearching" nzType="primary"><i
-    nz-icon
-    nzType="search"></i>Search
-  </button>
+    <app-location-input (addressChange)="startPoint?startErrorMsg='':null" [placeHolder]="'Input your origin'"
+                        [(address)]="startPoint"></app-location-input>
+    <p class="error">{{startErrorMsg}}</p>
+    <app-location-input (addressChange)="endPoint?endErrorMsg='':null" [placeHolder]="'Input your destination'"
+                        [(address)]="endPoint"></app-location-input>
+    <p class="error">{{endErrorMsg}}</p>
+    <div style="display: flow-root">
+        <button class="reset-button" nz-button (click)="resetSearch()" nzType="primary">Reset
+        </button>
+        <button class="search-button" nz-button (click)="searchRoute()" [nzLoading]="isSearching" nzType="primary"><i
+                nz-icon
+                nzType="search"></i>Search
+        </button>
+    </div>
+    <p class="error" *ngIf="searchErrorMsg">{{searchErrorMsg}}, please retry
+<!--        <ng-container (click)="stopSearch()" class="text-button">Stop</ng-container>-->
+    </p>
+    <div class="result" *ngIf="totalDistance && totalTime">
+        <p>Total distance: {{totalDistance}}</p>
+        <p>Total distance: {{totalTime}}</p>
+    </div>
 </div>
 <div id="myMap" class="map-content"></div>

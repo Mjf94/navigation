@@ -2,7 +2,7 @@
 <!--<input type="text" hint="input your location"/>-->
 <div class="example-input">
   <nz-input-group [nzSuffix]="suffixIconSearch">
-    <input [(ngModel)]="address" (ngModelChange)="onChange($event)" type="text" nz-input placeholder="input search text"/>
+    <input [(ngModel)]="address" (ngModelChange)="onChange($event)" type="text" nz-input [placeholder]="placeHolder"/>
   </nz-input-group>
   <ng-template #suffixIconSearch>
     <i nz-icon nzType="search"></i>
