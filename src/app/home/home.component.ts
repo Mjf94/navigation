@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 	map: any;
 	routePath: any;
 	startMarker: any;
-	endMarker;
+	endMarker: any;
 	startErrorMsg: string = '';
 	endErrorMsg: string = '';
 	searchErrorMsg: string = '';

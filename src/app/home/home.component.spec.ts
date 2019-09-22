@@ -5,6 +5,7 @@ import { LocationInputComponent } from '../component/location-input/location-inp
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
 
 describe('HomeComponent', () => {
 	let component: HomeComponent;
@@ -111,6 +112,19 @@ describe('HomeComponent', () => {
 		expect(component.searchErrorMsg).toBe('');
 		expect(component.startErrorMsg).toBe('');
 		expect(component.endErrorMsg).toBe('');
+	});
+	
+	it('should reset', () => {
+		let resetButton = fixture.debugElement.query(By.css('.reset-button'));
+		resetButton.triggerEventHandler('click', null);
+		expect(component.totalTime).toBe('');
+		expect(component.totalDistance).toBe('');
+		expect(component.searchErrorMsg).toBe('');
+		expect(component.startErrorMsg).toBe('');
+		expect(component.endErrorMsg).toBe('');
+		expect(component.isSearching).not.toBeTruthy();
+		expect(component.startPoint).toBe('');
+		expect(component.endPoint).toBe('');
 	});
 	
 	
