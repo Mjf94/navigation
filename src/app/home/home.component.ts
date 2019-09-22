@@ -127,6 +127,7 @@ export class HomeComponent implements OnInit {
 		this.searchErrorMsg = '';
 		this.isSearching = false;
 		this.clearMap();
+		this.stopSearch();
 	}
 	
 	initMap() {
