@@ -11,19 +11,18 @@ declare var google;
 export class LocationInputComponent implements AfterViewInit {
 	
 	@Input()
+	placeHolder: string;
+	
+	@Input()
 	address: string;
 	@Output()
 	addressChange = new EventEmitter<string>();
 	
-	@Input()
-	placeHolder: string;
+	
 	
 	@ViewChild('inputElement', {static: false}) myInput: ElementRef;
 	@ViewChild('autoHint', {static: false}) autoHint: ElementRef;
 	
-	options: Array<{ value: string; category: string; count: number }> = [];
-	infoWindow;
-	infowindowContent;
 	
 	constructor() {
 		// this.address
