@@ -17,7 +17,7 @@ export class MockApiService {
 			origin: inputOrigin,
 			destination: inputDestination
 		};
-		return this.httpClient.post(`${environment.api_path}/`, {});
+		return this.httpClient.post(`${environment.api_path}/`, body);
 	}
 	
 	getRoute(token: string): Observable<any> {

@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+
+declare var google;
 
 @Component({
 	selector: 'app-location-input',
@@ -6,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
 	styleUrls: ['./location-input.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 })
-export class LocationInputComponent implements OnInit {
+export class LocationInputComponent implements AfterViewInit {
 	
 	@Input()
 	address: string;
@@ -16,13 +18,31 @@ export class LocationInputComponent implements OnInit {
 	@Input()
 	placeHolder: string;
 	
+	@ViewChild('inputElement', {static: false}) myInput: ElementRef;
+	@ViewChild('autoHint', {static: false}) autoHint: ElementRef;
+	
 	options: Array<{ value: string; category: string; count: number }> = [];
+	infoWindow;
+	infowindowContent;
 	
 	constructor() {
 		// this.address
 	}
 	
-	ngOnInit() {
+	ngAfterViewInit() {
+		let autocomplete = new google.maps.places.Autocomplete(this.myInput.nativeElement);
+		autocomplete.setFields(['name']);
+		
+		autocomplete.addListener('place_changed', () => {
+			let place = autocomplete.getPlace();
+			console.log('place changed', place);
+			
+			if (place) {
+				this.address = place.name;
+				this.addressChange.emit(this.address);
+				console.log('overwrite address', this.address);
+			}
+		});
 	}
 	
 	onChange(event): void {
